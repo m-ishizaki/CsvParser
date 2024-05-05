@@ -1,4 +1,4 @@
-﻿namespace CsvParser;
+﻿namespace RkSoftware.CsvParser;
 
 public static class CsvWriter
 {
@@ -10,7 +10,7 @@ public static class CsvWriter
     {
         var sb = new System.Text.StringBuilder();
         foreach (var line in data ?? Array.Empty<string[]>())
-            sb.Append(string.Join(',', line.Select(Escape)) + '\n');
+            sb.Append(string.Join(",", line.Select(Escape)) + '\n');
         return sb.ToString();
 
         static string Escape(string cell) =>

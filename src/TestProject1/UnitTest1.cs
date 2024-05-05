@@ -1,6 +1,4 @@
-﻿using System.Reflection.PortableExecutable;
-using static System.Net.Mime.MediaTypeNames;
-
+﻿
 namespace TestProject1
 {
     [TestClass]
@@ -29,7 +27,7 @@ namespace TestProject1
             var correctHeader = new[] { "a", "b", "c" };
             var correctData = new[] { new[] { "1", "2", "3" }, new[] { "4", "5", "6" } };
 
-            var (header, data) = CsvParser.CsvReader.ReadHeaderAndData(csvString);
+            var (header, data) = RkSoftware.CsvParser.CsvReader.ReadHeaderAndData(csvString);
 
             TestRead(correctHeader, correctData, header, data);
         }
@@ -42,7 +40,7 @@ namespace TestProject1
             var correctHeader = new[] { "a", "b", "c\"d" };
             var correctData = new[] { new[] { "1'0", "2", "3" }, new[] { "4", "5", "6\n7" } };
 
-            var (header, data) = CsvParser.CsvReader.ReadHeaderAndData(csvString);
+            var (header, data) = RkSoftware.CsvParser.CsvReader.ReadHeaderAndData(csvString);
 
             TestRead(correctHeader, correctData, header, data);
         }
@@ -55,7 +53,7 @@ namespace TestProject1
             var header = new[] { "a", "b", "c" };
             var data = new[] { new[] { "1", "2", "3" }, new[] { "4", "5", "6" } };
 
-            var csvString = CsvParser.CsvWriter.Write(header, data);
+            var csvString = RkSoftware.CsvParser.CsvWriter.Write(header, data);
 
             Assert.AreEqual(correctString, csvString);
         }
@@ -68,7 +66,7 @@ namespace TestProject1
             var header = new[] { "a", "b", "c\"d" };
             var data = new[] { new[] { "1'0'", "2", "3" }, new[] { "4", "5", "6\n7" } };
 
-            var csvString = CsvParser.CsvWriter.Write(header, data);
+            var csvString = RkSoftware.CsvParser.CsvWriter.Write(header, data);
 
             Assert.AreEqual(correctString, csvString);
         }

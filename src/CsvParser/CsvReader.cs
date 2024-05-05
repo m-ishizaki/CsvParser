@@ -1,4 +1,4 @@
-﻿namespace CsvParser;
+﻿namespace RkSoftware.CsvParser;
 
 public static class CsvReader
 {
